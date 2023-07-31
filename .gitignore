@@ -6,6 +6,22 @@ __pycache__/
 # C extensions
 *.so
 
+#Trying to delet .idea from repositori
+# Добавить папку в игнор-лист гита
+echo '.idea' >> .gitignore
+
+# Удалить папку из стейджинга
+git rm -r --cached .idea
+
+# Добавить файл в гит
+git add .gitignore
+
+# Зафиксировать изменения
+git commit -m 'Удалил папку .idea из репозитория'
+
+# Запушить в репу
+git push
+
 # Distribution / packaging
 .Python
 build/
