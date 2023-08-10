@@ -7,9 +7,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return f"Вот список ваших дисков: {disk_list()}"
+    reply = ''
+    for disk in disk_list():
+        reply += f'Disk -- {disk}\
+        stats:{disk_analisis(disk)}'
+    return reply
 
 
-# disk_list(), disk_analisis()
+# f"Вот список ваших дисков: {disk_list()}"
 if __name__ == '__main__':
     app.run()
