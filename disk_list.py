@@ -9,6 +9,9 @@ def disk_list():
     for disk in disklist:
         # print(disks.device)
         devices.append(disk.device)
+        # This one is remove these (':\\') symbols  from list
+        # It's necessary for disk_analisis due to argument of func(only str without symbols)
+        devices = [x.split(':\\')[0] for x in devices]
     return devices  # return the list with disks we need
     # Seconde variaton of code
     # i = 0
