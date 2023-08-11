@@ -2,24 +2,17 @@ import psutil
 
 
 def disk_list():
-    # function that retrun a list of disks
-    devices = []  # list only with name of user's devices(disks)
-    disk = []
-    disklist = psutil.disk_partitions(all=False)  # list with user data(How many disks does he have)
+    '''
+    function that retrun a list of disks
+    :return: list of disks
+    '''
+    # list only with name of user's devices(disks)
+    devices = []
+    # list with user data(How many disks does he have)
+    disklist = psutil.disk_partitions(all=False)
     for disk in disklist:
-        # print(disks.device)
         devices.append(disk.device)
         # This one is remove these (':\\') symbols  from list
-        # It's necessary for disk_analisis due to argument of func(only str without symbols)
+        # It's necessary for disk_analisis because argument of func(only str without symbols)
         devices = [x.split(':\\')[0] for x in devices]
-    return devices  # return the list with disks we need
-    # Seconde variaton of code
-    # i = 0
-    # while i<len(a):
-    #     # print(a[i])
-    #     c = a[i]
-    #     b.append(c.device) # тут на каждой итерации добавляем в список нужный нам объект
-    #     i += 1
-
-
-print(disk_list())
+    return devices
