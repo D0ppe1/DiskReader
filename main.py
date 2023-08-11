@@ -1,6 +1,6 @@
-from flask import *
-from disk_list import *
-from disk_analisis import *
+from flask import Flask
+import disk_list
+import disk_analisis
 
 app = Flask(__name__)
 
@@ -8,12 +8,10 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     reply = ''
-    for disk in disk_list():
-        reply += f'Disk -- {disk}\
-        stats:{disk_analisis(disk)}'
+    for disk in disk_list.disk_list():
+        reply += f'Disk -- {disk} -- <br> Stats: {disk_analisis.disk_analisis(disk)}<br>'
     return reply
 
 
-# f"Вот список ваших дисков: {disk_list()}"
 if __name__ == '__main__':
-    app.run()
+    app.run(host='192.168.0.57', port=80)
